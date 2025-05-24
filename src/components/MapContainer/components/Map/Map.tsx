@@ -1,43 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
 
 import { INITIAL_CENTER, INITIAL_ZOOM } from './Map.constants';
-import type { CenterCoordinates } from './Map.types';
+import { useMap } from './Map.hooks';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.css';
 
 export const Map = () => {
-  const mapRef = useRef<mapboxgl.Map | null>(null)
-  const mapRootRef = useRef<HTMLDivElement | null>(null)
-
-  const [center, setCenter] = useState<CenterCoordinates>(INITIAL_CENTER)
-  const [zoom, setZoom] = useState(INITIAL_ZOOM)
-
-  useEffect(() => {
-    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-    mapRef.current = new mapboxgl.Map({
-      container: mapRootRef.current ?? 'map-root',
-      center,
-      zoom,
-    })
-
-    mapRef.current.on('move', () => {
-      const mapCenter = mapRef.current?.getCenter();
-      const mapZoom = mapRef.current?.getZoom();
-
-      if (mapCenter) {
-        setCenter([mapCenter.lng, mapCenter.lat]);
-      }
-
-      if (mapZoom) {
-        setZoom(mapZoom);
-      }
-    })
-
-    return () => {
-      mapRef.current?.remove();
-    }
-  }, []);
+  const { mapRef, mapRootRef, center, zoom } = useMap();
 
   const handleOnClick = () => {
     mapRef.current?.flyTo({
