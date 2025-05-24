@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
+import { INITIAL_CENTER, INITIAL_ZOOM } from './Map.constants';
+import type { CenterCoordinates } from './Map.types';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.css';
-
-type CenterCoordinates = [number, number];
-
-const INITIAL_CENTER = [-74.0242, 40.6941] as CenterCoordinates;
-const INITIAL_ZOOM = 10.12;
 
 export const Map = () => {
   const mapRef = useRef<mapboxgl.Map | null>(null)
