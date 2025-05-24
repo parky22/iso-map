@@ -12,6 +12,8 @@ export const Map = () => {
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapRootRef.current ?? 'map-root',
+      center: [-74.0242, 40.6941],
+      zoom: 10.12
     })
 
     return () => {
