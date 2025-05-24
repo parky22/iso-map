@@ -1,19 +1,40 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.css';
 
+type CenterCoordinates = [number, number];
+
+const INITIAL_CENTER = [-74.0242, 40.6941] as CenterCoordinates;
+const INITIAL_ZOOM = 10.12;
+
 export const Map = () => {
   const mapRef = useRef<mapboxgl.Map | null>(null)
   const mapRootRef = useRef<HTMLDivElement | null>(null)
+
+  const [center, setCenter] = useState<CenterCoordinates>(INITIAL_CENTER)
+  const [zoom, setZoom] = useState(INITIAL_ZOOM)
 
   useEffect(() => {
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapRootRef.current ?? 'map-root',
-      center: [-74.0242, 40.6941],
-      zoom: 10.12
+      center,
+      zoom,
+    })
+
+    mapRef.current.on('move', () => {
+      const mapCenter = mapRef.current?.getCenter();
+      const mapZoom = mapRef.current?.getZoom();
+
+      if (mapCenter) {
+        setCenter([mapCenter.lng, mapCenter.lat]);
+      }
+
+      if (mapZoom) {
+        setZoom(mapZoom);
+      }
     })
 
     return () => {
@@ -21,5 +42,12 @@ export const Map = () => {
     }
   }, [])
 
-  return <div id="map-root" ref={mapRootRef} className={styles.map} />;
+  return (
+    <>
+      <div className="sidebar">
+        Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
+      </div>
+      <div id="map-root" ref={mapRootRef} className={styles.map} />
+    </>
+  );
 }; 
