@@ -1,8 +1,9 @@
 import Map from './components/Map';
+import TransitToggle from './components/TransitToggle';
 
 export const MapContainer = () => {
   return <>
-    <div>buttons for mode of transit</div>
+    <TransitToggle />
     <div>buttons for time</div>
     <Map />
   </>;
