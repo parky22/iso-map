@@ -1,10 +1,9 @@
-import Map from './components/Map';
-import TransitToggle from './components/TransitToggle';
+import { Map, TimeSlider, TransitToggle } from "./components";
 
 export const MapContainer = () => {
   return <>
     <TransitToggle />
-    <div>buttons for time</div>
+    <TimeSlider />
     <Map />
   </>;
 };
