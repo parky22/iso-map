@@ -33,10 +33,10 @@ export const Map = ({ time, transitMode }: MapProps) => {
 
   return (
     <>
-      <div className="sidebar">
+      <div className={styles.sidebar}>
         Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
       </div>
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleReset} className={styles.resetButton}>Reset</button>
       <div id="map-root" ref={mapRootRef} className={styles.map} />
     </>
   );
