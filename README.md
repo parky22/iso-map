@@ -10,10 +10,6 @@ A simple React-based commute catchment visualizer using Mapbox. Click anywhere o
 - Choose travel time: 10, 20, or 30 minutes
 - Visualize reachable area as an isochrone polygon
 
-## 🚀 Live Demo
-
-TBD
-
 ## 🛠️ Tech Stack
 
 - [React](https://reactjs.org/)
@@ -21,3 +17,13 @@ TBD
 - [Vite](https://vitejs.dev/)
 - [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/)
 - CSS Modules
+
+## AI tools
+
+- Claude: UI/UX wireframes and debugger
+- ChatGPT: project idea generator
+- Cursor: Editor, pair programming
+
+## 🚀 Live Demo
+
+TBD
