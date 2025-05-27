@@ -4,10 +4,10 @@ import type { TransitMode } from "../components/MapContainer/MapContainer.types"
 const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/';
 const lon = INITIAL_CENTER[0];
 const lat = INITIAL_CENTER[1];
-const minutes = 10;
 const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
 interface GetIsoParams {
+  time: number;
   transitMode: TransitMode;
 }
 
@@ -24,8 +24,9 @@ const getProfile = (transitMode: TransitMode) => {
   }
 };
 
-async function getIso({ transitMode }: GetIsoParams) {
+async function getIso({ time, transitMode }: GetIsoParams) {
   const profile = getProfile(transitMode);
+  const minutes = Math.round(time);
 
   const query = await fetch(
     `${urlBase}${profile}/${lon},${lat}?contours_minutes=${minutes}&polygons=true&access_token=${accessToken}`,

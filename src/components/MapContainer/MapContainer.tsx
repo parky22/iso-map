@@ -4,14 +4,19 @@ import type { TransitMode } from "./MapContainer.types";
 
 export const MapContainer = () => {
   const [transitMode, setTransitMode] = useState<TransitMode>('walk');
+  const [time, setTime] = useState<number>(10);
 
-  const handleTransitModeChange = (mode: TransitMode) => {
+  const onTransitModeChange = (mode: TransitMode) => {
     setTransitMode(mode);
+  };
+  
+  const onTimeChange = (time: number) => {
+    setTime(time);
   };
 
   return <>
-    <TransitToggle onChange={handleTransitModeChange} />
-    <TimeSlider />
-    <Map transitMode={transitMode} />
+    <TransitToggle onChange={onTransitModeChange} />
+    <TimeSlider onChange={onTimeChange} />
+    <Map time={time} transitMode={transitMode} />
   </>;
 };

@@ -8,10 +8,11 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.css';
 
 interface MapProps {
+  time: number;
   transitMode: TransitMode;
 }
 
-export const Map = ({ transitMode }: MapProps) => {
+export const Map = ({ time, transitMode }: MapProps) => {
   const { mapRef, mapRootRef, center, zoom } = useMap();
 
   const handleReset = useCallback(() => {
@@ -22,13 +23,13 @@ export const Map = ({ transitMode }: MapProps) => {
   }, [mapRef]);
 
   useEffect(() => {
-    getIso({ transitMode }).then((data) => {
+    getIso({ time, transitMode }).then((data) => {
       const source = mapRef.current?.getSource('iso');
       if (source && 'setData' in source) {
         (source as any).setData(data);
       }
     });
-  }, [transitMode]);
+  }, [time, transitMode]);
 
   return (
     <>
