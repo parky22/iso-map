@@ -1,0 +1,14 @@
+:root {
+  /* Base colors */
+  --white: #ffffff;
+  --black: #000000;
+  --gray-light: #666666;
+  --gray-dark: #333333;
+
+  /* Semantic colors */
+  --color-bg: var(--white);
+  --color-primary: var(--black);
+  --color-secondary: var(--gray-light);
+  --color-accent: var(--gray-dark);
+  --color-text: var(--black);
+} 

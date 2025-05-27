@@ -1,3 +1,5 @@
+@import './colors.css';
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,18 +13,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --color-soft-peach: #fff7f3;
-  --color-muted-teal: #6fc1bc;
-  --color-warm-mustard: #f4a261;
-  --color-dusty-rose: #f7a5b9;
-  --color-deep-navy: #2e4057;
-
-  --color-bg: var(--color-soft-peach);
-  --color-primary: var(--color-warm-mustard);
-  --color-secondary: var(--color-muted-teal);
-  --color-accent: var(--color-dusty-rose);
-  --color-text: var(--color-deep-navy);
 }
 
 a {
@@ -31,7 +21,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--color-primary);
 }
 
 body {
