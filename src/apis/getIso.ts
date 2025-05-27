@@ -1,6 +1,8 @@
+import { INITIAL_CENTER } from "../components/MapContainer/components/Map/Map.constants";
+
 const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/';
-const lon = -77.034;
-const lat = 38.899;
+const lon = INITIAL_CENTER[0];
+const lat = INITIAL_CENTER[1];
 const profile = 'cycling';
 const minutes = 10;
 const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;

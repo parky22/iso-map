@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
+import getIso from '../../../../apis/getIso';
 import type { CenterCoordinates } from './Map.types';
 import { INITIAL_CENTER, INITIAL_ZOOM } from './Map.constants';
 
@@ -18,6 +19,36 @@ export const useMap = () => {
       center,
       zoom,
     })
+
+    mapRef.current.on('load', () => {
+      mapRef.current!.addSource('iso', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [],
+        },
+      });
+
+      mapRef.current!.addLayer(
+        {
+          id: 'isoLayer',
+          type: 'fill',
+          source: 'iso',
+          layout: {},
+          paint: {
+            'fill-color': '#5a3fc0',
+            'fill-opacity': 0.3,
+          },
+        },
+      );
+
+      getIso().then((data) => {
+        const source = mapRef.current!.getSource('iso');
+        if (source && 'setData' in source) {
+          (source as mapboxgl.GeoJSONSource).setData(data);
+        }
+      });
+    });
 
     mapRef.current.on('move', () => {
       const mapCenter = mapRef.current?.getCenter();
