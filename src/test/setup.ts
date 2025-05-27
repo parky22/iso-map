@@ -11,4 +11,8 @@ declare global {
   export const describe: typeof import('vitest')['describe'];
   export const expect: typeof import('vitest')['expect'];
   export const vi: typeof import('vitest')['vi'];
+  export const beforeEach: typeof import('vitest')['beforeEach'];
+  export const beforeAll: typeof import('vitest')['beforeAll'];
+  export const afterEach: typeof import('vitest')['afterEach'];
+  export const afterAll: typeof import('vitest')['afterAll'];
 } 
