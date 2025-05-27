@@ -1,6 +1,14 @@
 import '@testing-library/jest-dom';
-
-// Extend expect with DOM matchers
 import { expect } from 'vitest';
 import * as matchers from '@testing-library/jest-dom/matchers';
-expect.extend(matchers); 
+
+// Make Vitest's expect extend Jest DOM matchers
+expect.extend(matchers);
+
+// Make test functions available globally
+declare global {
+  export const it: typeof import('vitest')['it'];
+  export const describe: typeof import('vitest')['describe'];
+  export const expect: typeof import('vitest')['expect'];
+  export const vi: typeof import('vitest')['vi'];
+} 
