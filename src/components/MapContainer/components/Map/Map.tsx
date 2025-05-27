@@ -22,13 +22,13 @@ export const Map = ({ transitMode }: MapProps) => {
   }, [mapRef]);
 
   useEffect(() => {
-    getIso().then((data) => {
+    getIso({ transitMode }).then((data) => {
       const source = mapRef.current?.getSource('iso');
       if (source && 'setData' in source) {
         (source as any).setData(data);
       }
     });
-  }, [center, transitMode]);
+  }, [transitMode]);
 
   return (
     <>
