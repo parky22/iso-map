@@ -41,13 +41,6 @@ export const useMap = () => {
           },
         },
       );
-
-      getIso().then((data) => {
-        const source = mapRef.current!.getSource('iso');
-        if (source && 'setData' in source) {
-          (source as mapboxgl.GeoJSONSource).setData(data);
-        }
-      });
     });
 
     mapRef.current.on('move', () => {

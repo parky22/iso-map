@@ -1,11 +1,17 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
+import getIso from '../../../../apis/getIso';
+import type { TransitMode } from '../../MapContainer.types';
 import { INITIAL_CENTER, INITIAL_ZOOM } from './Map.constants';
 import { useMap } from './Map.hooks';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './Map.module.css';
 
-export const Map = () => {
+interface MapProps {
+  transitMode: TransitMode;
+}
+
+export const Map = ({ transitMode }: MapProps) => {
   const { mapRef, mapRootRef, center, zoom } = useMap();
 
   const handleReset = useCallback(() => {
@@ -14,6 +20,15 @@ export const Map = () => {
       zoom: INITIAL_ZOOM,
     });
   }, [mapRef]);
+
+  useEffect(() => {
+    getIso().then((data) => {
+      const source = mapRef.current?.getSource('iso');
+      if (source && 'setData' in source) {
+        (source as any).setData(data);
+      }
+    });
+  }, [center, transitMode]);
 
   return (
     <>
