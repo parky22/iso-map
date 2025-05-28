@@ -1,6 +1,6 @@
 import Footer from './components/Footer'
 import Header from './components/Header'
-import MapContainer from './components/MapContainer'
+import LandingPrompt from './components/LandingPrompt'
 
 import './App.css'
 
@@ -9,7 +9,7 @@ function App() {
     <div className="app">
       <Header className="header" />
       <div className="main-content">
-        <MapContainer />
+        <LandingPrompt />
       </div>
       <Footer className="footer" />
     </div>
