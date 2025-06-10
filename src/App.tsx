@@ -1,9 +1,9 @@
-import Footer from './components/Footer'
-import Header from './components/Header'
-import LandingPrompt from './components/LandingPrompt'
-import MapContainer from './components/MapContainer'
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import LandingPrompt from "./components/LandingPrompt";
+import MapContainer from "./components/MapContainer";
 
-import './App.css'
+import "./App.css";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       </div>
       <Footer className="footer" />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

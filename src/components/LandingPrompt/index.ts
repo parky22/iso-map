@@ -1,1 +1,1 @@
-export { LandingPrompt as default } from './LandingPrompt';
+export { LandingPrompt as default } from "./LandingPrompt";

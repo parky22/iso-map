@@ -1,1 +1,1 @@
-export { TimeSlider as default } from './TimeSlider';
+export { TimeSlider as default } from "./TimeSlider";

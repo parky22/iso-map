@@ -1,1 +1,1 @@
-export type TransitMode = 'walk' | 'bike' | 'drive';
+export type TransitMode = "walk" | "bike" | "drive";

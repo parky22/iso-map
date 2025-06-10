@@ -1,5 +1,5 @@
-import cn from 'classnames';
-import styles from './Header.module.css';
+import cn from "classnames";
+import styles from "./Header.module.css";
 
 interface HeaderProps {
   className?: string;

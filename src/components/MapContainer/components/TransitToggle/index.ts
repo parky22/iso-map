@@ -1,1 +1,1 @@
-export { TransitToggle as default } from './TransitToggle';
+export { TransitToggle as default } from "./TransitToggle";

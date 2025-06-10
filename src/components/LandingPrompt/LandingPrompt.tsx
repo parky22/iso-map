@@ -1,23 +1,25 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import styles from './LandingPrompt.module.css'
+import styles from "./LandingPrompt.module.css";
 
 export function LandingPrompt() {
-  const [textValue, setTextValue] = useState('')
+  const [textValue, setTextValue] = useState("");
 
   const onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextValue(e.target.value)
-  }
+    setTextValue(e.target.value);
+  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(textValue)
-  }
+    console.log(textValue);
+  };
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
-      <label htmlFor="prompt" className={styles.label}>Where do you want to go?</label>
+      <label htmlFor="prompt" className={styles.label}>
+        Where do you want to go?
+      </label>
       <textarea
         className={styles.textarea}
         id="prompt"
@@ -31,4 +33,4 @@ export function LandingPrompt() {
       <button className={styles.button}>Go</button>
     </form>
   );
-};
+}
