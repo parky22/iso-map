@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import styles from './LandingPrompt.module.css'
 
-export const LandingPrompt = () => {
+export function LandingPrompt() {
   const [textValue, setTextValue] = useState('')
 
   const onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
