@@ -16,12 +16,12 @@ export const MapContainer = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <TransitToggle onChange={onTransitModeChange} />
       <TimeSlider onChange={onTimeChange} />
       <div className={styles.map}>
         <Map time={time} transitMode={transitMode} />
       </div>
-    </>
+    </div>
   );
 };
