@@ -7,21 +7,27 @@ export const LandingPrompt = () => {
     setTextValue(e.target.value)
   }
 
-  const onSubmit = () => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     console.log(textValue)
   }
 
   return (
-    <div className="landing-prompt">
-      <h2>Where do you want to go?</h2>
+    <form className="landing-prompt" onSubmit={onSubmit}>
+      <label htmlFor="prompt">Where do you want to go?</label>
       <div>
         <textarea
-          placeholder="Enter your destination"
+          id="prompt"
+          name="prompt"
+          rows={10}
+          cols={20}
+          placeholder="It's a beautiful day in the neighborhood..."
           value={textValue}
           onChange={onTextChange}
         />
-        <button onClick={onSubmit}>Go</button>
+        <button>Go</button>
       </div>
-    </div>
+    </form>
   );
 };
