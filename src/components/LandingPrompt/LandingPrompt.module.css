@@ -1,0 +1,19 @@
+.form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.label {
+  margin: 0.5rem 0;
+}
+
+.textarea {
+  margin: 0.5rem 0;
+}
+
+.button {
+  border: 1px solid black;
+}
